@@ -1,0 +1,45 @@
+import axios from "axios";
+import "./App.css";
+
+import { useEffect, useState } from "react";
+
+import TaskForm from "./components/TaskForm";
+import TaskList from "./components/TaskList";
+
+function App() {
+  const [tasks, setTasks] = useState([]);
+
+  const fetchTasks = async () => {
+    try {
+      const response = await axios.get("http://127.0.0.1:5000/api/tasks");
+      setTasks(response.data.tasks);
+    } catch (error) {
+      console.error("Failed to get tasks", error);
+    }
+  };
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchTasks();
+  }, []);
+
+  const onAdd = async (title) => {
+    await axios.post("http://127.0.0.1:5000/api/tasks", { title });
+    fetchTasks();
+  };
+
+  const onDelete = async (id) => {
+    await axios.delete(`http://127.0.0.1:5000/api/tasks/${id}`);
+    console.log(id);
+    fetchTasks();
+  };
+
+  return (
+    <>
+      <TaskForm onAdd={onAdd} />
+      <TaskList tasks={tasks} onDelete={onDelete} />
+    </>
+  );
+}
+
+export default App;
