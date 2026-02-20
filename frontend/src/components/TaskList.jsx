@@ -1,17 +1,21 @@
+import TaskItem from "./TaskItem";
+
 const TaskList = ({ tasks, onDelete }) => {
   return (
     <>
       <h1>TaskList</h1>
-      <ul>
-        {tasks.map((task) => {
-          return (
-            <li key={task._id}>
-              ID: {task._id} Name: {task.title}{" "}
-              <button onClick={() => onDelete(task._id)}>Delete</button>
-            </li>
-          );
-        })}
-      </ul>
+      <div className="task-list">
+        <ul>
+          {tasks.map((task) => (
+            <TaskItem
+              key={task._id}
+              _id={task._id}
+              title={task.title}
+              onDelete={onDelete}
+            />
+          ))}
+        </ul>
+      </div>
     </>
   );
 };

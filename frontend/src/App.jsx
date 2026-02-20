@@ -14,7 +14,15 @@ function App() {
       const response = await axios.get("http://127.0.0.1:5000/api/tasks");
       setTasks(response.data.tasks);
     } catch (error) {
-      console.error("Failed to get tasks", error);
+      if (error.response) {
+        console.log(
+          "Error: ",
+          error.response.data.status,
+          error.response.data.message,
+        );
+      } else {
+        console.error("Failed to get tasks", error);
+      }
     }
   };
 
@@ -24,14 +32,37 @@ function App() {
   }, []);
 
   const onAdd = async (title) => {
-    await axios.post("http://127.0.0.1:5000/api/tasks", { title });
-    fetchTasks();
+    try {
+      await axios.post("http://127.0.0.1:5000/api/tasks", { title });
+      fetchTasks();
+    } catch (error) {
+      if (error.response) {
+        console.log(
+          "Error: ",
+          error.response.data.status,
+          error.response.data.message,
+        );
+      } else {
+        console.error("Failed to add task", error);
+      }
+    }
   };
 
   const onDelete = async (id) => {
-    await axios.delete(`http://127.0.0.1:5000/api/tasks/${id}`);
-    console.log(id);
-    fetchTasks();
+    try {
+      await axios.delete(`http://127.0.0.1:5000/api/tasks/${id}`);
+      fetchTasks();
+    } catch (error) {
+      if (error.response) {
+        console.log(
+          "Error: ",
+          error.response.data.status,
+          error.response.data.message,
+        );
+      } else {
+        console.error("Failed to delete task", error);
+      }
+    }
   };
 
   return (

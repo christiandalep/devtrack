@@ -40,3 +40,16 @@
 .read-the-docs {
   color: #888;
 }
+
+.task-list ul {
+  display: flex;
+  padding: 0;
+  flex-direction: column;
+  text-align: left;
+  list-style-type: none;
+  gap: 12px;
+}
+
+.task div {
+  padding: 2px;
+}
