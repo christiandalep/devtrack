@@ -67,8 +67,20 @@ function App() {
 
   return (
     <>
-      <TaskForm onAdd={onAdd} />
-      <TaskList tasks={tasks} onDelete={onDelete} />
+      <div className="container">
+        <div className="header-container">
+          <h1 className="title">Task Dashboard</h1>
+          <p className="subtitle">Browse your tasks</p>
+        </div>
+
+        <div className="input-container">
+          <TaskForm onAdd={onAdd} />
+        </div>
+
+        <div className="status-container">
+          <TaskList tasks={tasks} onDelete={onDelete} />
+        </div>
+      </div>
     </>
   );
 }
