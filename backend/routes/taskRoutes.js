@@ -32,11 +32,14 @@ router.post("/", async (req, res) => {
 
 router.patch("/:id", async (req, res) => {
   const taskId = req.params.id;
-  const { newTaskTitle } = req.body;
+  const { newTitle, newStatus } = req.body;
   try {
+    let newTask = {};
+    newTitle && (newTask.title = newTitle);
+    newStatus && (newTask.status = newStatus);
     const updatedTask = await Task.findOneAndUpdate(
       { _id: taskId },
-      { $set: { title: newTaskTitle } },
+      { $set: newTask },
       { new: true },
     );
 
@@ -45,7 +48,7 @@ router.patch("/:id", async (req, res) => {
     }
 
     return res.status(200).json({
-      message: "Successfully updated task title",
+      message: "Successfully updated task",
       updatedTask,
     });
   } catch (error) {
