@@ -32,11 +32,11 @@ router.post("/", async (req, res) => {
 
 router.patch("/:id", async (req, res) => {
   const taskId = req.params.id;
-  const { newTitle, newStatus } = req.body;
+  const { title, status } = req.body;
   try {
     let newTask = {};
-    newTitle && (newTask.title = newTitle);
-    newStatus && (newTask.status = newStatus);
+    title && (newTask.title = title);
+    status && (newTask.status = status);
     const updatedTask = await Task.findOneAndUpdate(
       { _id: taskId },
       { $set: newTask },
