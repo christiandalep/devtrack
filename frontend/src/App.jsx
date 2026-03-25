@@ -11,7 +11,7 @@ function App() {
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:5000/api/tasks");
+      const response = await axios.get("http://192.168.50.50:5000/api/tasks");
       setTasks(response.data.tasks);
     } catch (error) {
       if (error.response) {
@@ -65,6 +65,26 @@ function App() {
     }
   };
 
+  const onUpdate = async (id, title, status) => {
+    try {
+      await axios.patch(`http://192.168.50.50:5000/api/tasks/${id}`, {
+        title,
+        status,
+      });
+      fetchTasks();
+    } catch (error) {
+      if (error.response) {
+        console.log(
+          "Error: ",
+          error.response.data.status,
+          error.response.data.message,
+        );
+      } else {
+        console.error("Failed to update task", error);
+      }
+    }
+  };
+
   return (
     <>
       <div className="container">
@@ -77,7 +97,7 @@ function App() {
         </div>
 
         <div className="status-container">
-          <TaskList tasks={tasks} onDelete={onDelete} />
+          <TaskList tasks={tasks} onDelete={onDelete} onUpdate={onUpdate} />
         </div>
       </div>
     </>

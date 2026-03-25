@@ -1,6 +1,6 @@
 import TaskItem from "./TaskItem";
 
-const TaskList = ({ tasks, onDelete }) => {
+const TaskList = ({ tasks, onDelete, onUpdate }) => {
   const todoTasks = tasks.filter((task) => task.status === "TODO");
   const inProgressTasks = tasks.filter((task) => task.status === "IN-PROGRESS");
   const completedTasks = tasks.filter((task) => task.status === "COMPLETED");
@@ -16,7 +16,9 @@ const TaskList = ({ tasks, onDelete }) => {
                 key={task._id}
                 _id={task._id}
                 title={task.title}
+                status={task.status}
                 onDelete={onDelete}
+                onUpdate={onUpdate}
               />
             ))}
           </ul>
@@ -32,7 +34,9 @@ const TaskList = ({ tasks, onDelete }) => {
                 key={task._id}
                 _id={task._id}
                 title={task.title}
+                status={task.status}
                 onDelete={onDelete}
+                onUpdate={onUpdate}
               />
             ))}
           </ul>
@@ -48,7 +52,9 @@ const TaskList = ({ tasks, onDelete }) => {
                 key={task._id}
                 _id={task._id}
                 title={task.title}
+                status={task.status}
                 onDelete={onDelete}
+                onUpdate={onUpdate}
               />
             ))}
           </ul>

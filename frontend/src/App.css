@@ -69,6 +69,7 @@
 .status-in-progress,
 .status-completed {
   color: #9ca3af;
+  min-width: 0;
 }
 
 .task-list ul {
@@ -81,17 +82,18 @@
 }
 
 .task-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 8px;
   font-size: 14px;
   background: #111111;
   padding: 10px 16px;
 }
 
 .task-content {
-  min-width: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 12px;
+  word-break: break-word;
 }
 
 .delete-button {
@@ -107,6 +109,37 @@
 .delete-button:hover {
   color: #ff4d4f;
   transform: scale(1.1);
+}
+
+.task-status-update-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 18px;
+}
+
+.update-status-button-left,
+.update-status-button-right {
+  background: transparent;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  transition: 0.2s ease;
+  margin-top: 4px;
+  margin-right: 4px;
+}
+
+.update-status-button-left:hover,
+.update-status-button-right:hover {
+  color: white;
+  transform: scale(1.2);
+}
+
+.update-status-button-left {
+  margin-right: auto;
+}
+
+.update-status-button-right {
+  margin-left: auto;
 }
 
 .task-container div {
