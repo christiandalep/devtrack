@@ -33,7 +33,7 @@ function App() {
 
   const onAdd = async (title) => {
     try {
-      await axios.post("http://127.0.0.1:5000/api/tasks", { title });
+      await axios.post("http://192.168.50.50:5000/api/tasks", { title });
       fetchTasks();
     } catch (error) {
       if (error.response) {
@@ -50,7 +50,7 @@ function App() {
 
   const onDelete = async (id) => {
     try {
-      await axios.delete(`http://127.0.0.1:5000/api/tasks/${id}`);
+      await axios.delete(`http://192.168.50.50:5000/api/tasks/${id}`);
       fetchTasks();
     } catch (error) {
       if (error.response) {
@@ -70,7 +70,6 @@ function App() {
       <div className="container">
         <div className="header-container">
           <h1 className="title">Task Dashboard</h1>
-          <p className="subtitle">Browse your tasks</p>
         </div>
 
         <div className="input-container">
