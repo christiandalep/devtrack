@@ -9,7 +9,11 @@ const TaskForm = ({ onAdd }) => {
 
   return (
     <>
-      <input value={title} onChange={(e) => setTitle(e.target.value)} />
+      <input
+        placeholder="Add a new task..."
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
       <button onClick={submit}>Add</button>
     </>
   );
