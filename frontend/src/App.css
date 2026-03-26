@@ -96,14 +96,33 @@
   word-break: break-word;
 }
 
-.delete-button {
+.task-edit-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #9ca3af;
+  color: #9ca3af;
+  font-size: 14px;
+  padding-bottom: 4px;
+}
+
+.task-controls {
+  display: flex;
+  gap: 12px;
+}
+
+.delete-button,
+.edit-button {
   background: transparent;
   border: none;
   color: #888;
   cursor: pointer;
   transition: 0.2s ease;
-  margin-top: 4px;
-  margin-right: 4px;
+}
+
+.edit-button:hover {
+  color: white;
+  transform: scale(1.1);
 }
 
 .delete-button:hover {
@@ -140,6 +159,22 @@
 
 .update-status-button-right {
   margin-left: auto;
+}
+
+.task-edit-save-button,
+.task-edit-cancel-button {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.task-edit-save-button:hover,
+.task-edit-cancel-button:hover {
+  color: white;
+  transform: scale(1.1);
 }
 
 .task-container div {
