@@ -87,13 +87,18 @@
   padding: 10px 16px;
 }
 
-.task-content {
+.task-heading {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 24px;
   margin-bottom: 12px;
   word-break: break-word;
+}
+
+.task-title {
+  font-size: medium;
+  font-weight: bold;
 }
 
 .task-edit-input {

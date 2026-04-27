@@ -16,10 +16,11 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { title } = req.body;
+  const { title, description } = req.body;
   try {
     const newTask = await Task.create({
       title: title,
+      description: description,
     });
     return res.status(201).json({
       message: "Successfully created task",
@@ -32,10 +33,11 @@ router.post("/", async (req, res) => {
 
 router.patch("/:id", async (req, res) => {
   const taskId = req.params.id;
-  const { title, status } = req.body;
+  const { title, description, status } = req.body;
   try {
     let newTask = {};
     title && (newTask.title = title);
+    description && (newTask.description = description);
     status && (newTask.status = status);
     const updatedTask = await Task.findOneAndUpdate(
       { _id: taskId },

@@ -31,9 +31,12 @@ function App() {
     fetchTasks();
   }, []);
 
-  const onAdd = async (title) => {
+  const onAdd = async (title, description) => {
     try {
-      await axios.post("http://192.168.50.50:5000/api/tasks", { title });
+      await axios.post("http://192.168.50.50:5000/api/tasks", {
+        title,
+        description,
+      });
       fetchTasks();
     } catch (error) {
       if (error.response) {
@@ -65,10 +68,11 @@ function App() {
     }
   };
 
-  const onUpdate = async (id, title, status) => {
+  const onUpdate = async (id, title, description, status) => {
     try {
       await axios.patch(`http://192.168.50.50:5000/api/tasks/${id}`, {
         title,
+        description,
         status,
       });
       fetchTasks();

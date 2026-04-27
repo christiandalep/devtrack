@@ -8,6 +8,7 @@ const taskSchema = new mongoose.Schema(
       enum: ["TODO", "IN-PROGRESS", "COMPLETED"],
       default: "TODO",
     },
+    description: { type: String, required: false },
   },
   { timestamps: true },
 );
