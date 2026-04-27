@@ -20,6 +20,8 @@ const TaskItem = ({ _id, title, description, status, onDelete, onUpdate }) => {
 
   const handleCancelClick = () => {
     setIsEditing(false);
+    setTitleValue(title);
+    setDescriptionValue(description);
   };
 
   return (
