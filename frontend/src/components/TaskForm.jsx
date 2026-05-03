@@ -1,5 +1,6 @@
 import { useState } from "react";
-const TaskForm = ({ onAdd }) => {
+import "./TaskForm.css"
+const TaskForm = ({ onAdd, onClose }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -7,21 +8,28 @@ const TaskForm = ({ onAdd }) => {
     await onAdd(title, description);
     setTitle("");
     setDescription("");
+    onClose();
   };
 
   return (
     <>
-      <input
-        placeholder="Add a new task..."
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <input
-        placeholder="Description..."
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <button onClick={submit}>Add</button>
+      <div className="input-form">
+        <span>New Task</span>
+        <input
+          placeholder="Add a new task..."
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <input
+          placeholder="Description..."
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <div className="input-form-controls">
+          <button onClick={submit}>Add</button>
+          <button onClick={onClose}>Cancel</button>
+        </div>
+      </div>
     </>
   );
 };

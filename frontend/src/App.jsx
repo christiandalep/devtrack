@@ -8,6 +8,8 @@ import TaskList from "./components/TaskList";
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
+
 
   const fetchTasks = async () => {
     try {
@@ -70,11 +72,11 @@ function App() {
 
   const onUpdate = async (id, title, description, status) => {
     try {
-      await axios.patch(`http://192.168.50.50:5000/api/tasks/${id}`, {
-        title,
-        description,
-        status,
-      });
+      let newTask = {};
+      title && (newTask.title = title);
+      description && (newTask.description = description);
+      status && (newTask.status = status);      
+      await axios.patch(`http://192.168.50.50:5000/api/tasks/${id}`, newTask);
       fetchTasks();
     } catch (error) {
       if (error.response) {
@@ -95,10 +97,14 @@ function App() {
         <div className="header-container">
           <h1 className="title">Task Dashboard</h1>
         </div>
-
-        <div className="input-container">
-          <TaskForm onAdd={onAdd} />
-        </div>
+        <button className="add-new-task" onClick={() => setIsTaskModalOpen(true)}>Add new task</button>
+        
+          {isTaskModalOpen && 
+          <div className="input-container">
+            <TaskForm onAdd={onAdd} onClose={() => setIsTaskModalOpen(false)} />
+          </div>
+          }
+        
 
         <div className="status-container">
           <TaskList tasks={tasks} onDelete={onDelete} onUpdate={onUpdate} />

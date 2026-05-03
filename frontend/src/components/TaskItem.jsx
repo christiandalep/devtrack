@@ -90,7 +90,7 @@ const TaskItem = ({ _id, title, description, status, onDelete, onUpdate }) => {
             {status == "TODO" && (
               <button
                 className="update-status-button-right"
-                onClick={() => onUpdate(_id, title, "IN-PROGRESS")}
+                onClick={() => onUpdate(_id, title, description, "IN-PROGRESS")}
               >
                 <MoveRight size={20} />
               </button>
@@ -100,13 +100,13 @@ const TaskItem = ({ _id, title, description, status, onDelete, onUpdate }) => {
               <>
                 <button
                   className="update-status-button-left"
-                  onClick={() => onUpdate(_id, title, "TODO")}
+                  onClick={() => onUpdate(_id, title, description,"TODO")}
                 >
                   <MoveLeft size={20} />
                 </button>
                 <button
                   className="update-status-button-right"
-                  onClick={() => onUpdate(_id, title, "COMPLETED")}
+                  onClick={() => onUpdate(_id, title, description,"COMPLETED")}
                 >
                   <MoveRight size={20} />
                 </button>
@@ -116,7 +116,7 @@ const TaskItem = ({ _id, title, description, status, onDelete, onUpdate }) => {
             {status == "COMPLETED" && (
               <button
                 className="update-status-button-left"
-                onClick={() => onUpdate(_id, title, "IN-PROGRESS")}
+                onClick={() => onUpdate(_id, title, description,"IN-PROGRESS")}
               >
                 <MoveLeft size={20} />
               </button>
