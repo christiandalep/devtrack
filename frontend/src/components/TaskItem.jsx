@@ -1,10 +1,21 @@
 import { Pencil, Trash2, MoveLeft, MoveRight, Pen } from "lucide-react";
 import { useState } from "react";
+import { formatDate, formatInputDate } from "../utils/dateUtils";
 
-const TaskItem = ({ _id, title, description, status, onDelete, onUpdate }) => {
+const TaskItem = ({
+  _id,
+  title,
+  description,
+  status,
+  createdAt,
+  deadline,
+  onDelete,
+  onUpdate,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const [titleValue, setTitleValue] = useState(title);
   const [descriptionValue, setDescriptionValue] = useState(description);
+  const [deadlineValue, setDeadlineValue] = useState(deadline);
 
   const handleTitleChange = (e) => {
     setTitleValue(e.target.value);
@@ -13,8 +24,13 @@ const TaskItem = ({ _id, title, description, status, onDelete, onUpdate }) => {
   const handleDescriptionChange = (e) => {
     setDescriptionValue(e.target.value);
   };
+
+  const handleDeadlineChange = (e) => {
+    setDeadlineValue(e.target.value);
+  };
+
   const handleSaveClick = () => {
-    onUpdate(_id, titleValue, descriptionValue);
+    onUpdate(_id, titleValue, descriptionValue, status, deadlineValue);
     setIsEditing(false);
   };
 
@@ -22,6 +38,11 @@ const TaskItem = ({ _id, title, description, status, onDelete, onUpdate }) => {
     setIsEditing(false);
     setTitleValue(title);
     setDescriptionValue(description);
+    setDeadlineValue(deadline);
+  };
+
+  const updateStatus = (newStatus) => {
+    onUpdate(_id, titleValue, descriptionValue, newStatus, deadline);
   };
 
   return (
@@ -33,7 +54,7 @@ const TaskItem = ({ _id, title, description, status, onDelete, onUpdate }) => {
               {isEditing ? (
                 <>
                   <input
-                    className="task-edit-input"
+                    className="task-edit-input-title"
                     type="text"
                     value={titleValue}
                     onChange={handleTitleChange}
@@ -73,50 +94,68 @@ const TaskItem = ({ _id, title, description, status, onDelete, onUpdate }) => {
                 </>
               )}
             </div>
+
             {isEditing ? (
-              <input
-                className="task-edit-input"
-                type="text"
-                placeholder="description..."
-                value={descriptionValue}
-                onChange={handleDescriptionChange}
-              />
+              <>
+                <textarea
+                  className="task-edit-input-description"
+                  rows={5}
+                  value={descriptionValue}
+                  onChange={handleDescriptionChange}
+                ></textarea>
+                <input
+                  type="date"
+                  className="task-edit-input-deadline"
+                  value={formatInputDate(deadlineValue)}
+                  onChange={handleDeadlineChange}
+                />
+              </>
             ) : (
-              <div className="task-description">{description}</div>
+              <>
+                <p className="task-description">{description}</p>
+                <div className="div task-dates">
+                  <p className="task-created-at">
+                    Created: {formatDate(createdAt)}
+                  </p>
+                  <p className="task-deadline">Due: {formatDate(deadline)}</p>
+                </div>
+              </>
             )}
           </div>
 
           <div className="task-status-update-container">
-            {status == "TODO" && (
+            {status === "TODO" && (
               <button
                 className="update-status-button-right"
-                onClick={() => onUpdate(_id, title, description, "IN-PROGRESS")}
+                onClick={() =>
+                  onUpdate(_id, title, description, "IN-PROGRESS", deadline)
+                }
               >
                 <MoveRight size={20} />
               </button>
             )}
 
-            {status == "IN-PROGRESS" && (
+            {status === "IN-PROGRESS" && (
               <>
                 <button
                   className="update-status-button-left"
-                  onClick={() => onUpdate(_id, title, description,"TODO")}
+                  onClick={() => updateStatus("TODO")}
                 >
                   <MoveLeft size={20} />
                 </button>
                 <button
                   className="update-status-button-right"
-                  onClick={() => onUpdate(_id, title, description,"COMPLETED")}
+                  onClick={() => updateStatus("COMPLETED")}
                 >
                   <MoveRight size={20} />
                 </button>
               </>
             )}
 
-            {status == "COMPLETED" && (
+            {status === "COMPLETED" && (
               <button
                 className="update-status-button-left"
-                onClick={() => onUpdate(_id, title, description,"IN-PROGRESS")}
+                onClick={() => updateStatus("IN-PROGRESS")}
               >
                 <MoveLeft size={20} />
               </button>

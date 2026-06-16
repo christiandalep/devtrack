@@ -11,13 +11,18 @@
   margin-bottom: 19px;
 }
 
-.input-form input {
+.input-form input,
+.input-form-description {
   flex: 1;
   padding: 10px;
   background: #111111;
   border: 1px solid #262626;
   color: white;
   border-radius: 8px;
+}
+
+.input-form-description {
+  resize: none;
 }
 
 .input-form-controls {

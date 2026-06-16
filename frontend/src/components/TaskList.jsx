@@ -16,8 +16,10 @@ const TaskList = ({ tasks, onDelete, onUpdate }) => {
                 key={task._id}
                 _id={task._id}
                 title={task.title}
-                description={task.description}
                 status={task.status}
+                description={task.description}
+                createdAt={task.createdAt}
+                deadline={task.deadline}
                 onDelete={onDelete}
                 onUpdate={onUpdate}
               />
@@ -35,8 +37,10 @@ const TaskList = ({ tasks, onDelete, onUpdate }) => {
                 key={task._id}
                 _id={task._id}
                 title={task.title}
-                description={task.description}
                 status={task.status}
+                description={task.description}
+                createdAt={task.createdAt}
+                deadline={task.deadline}
                 onDelete={onDelete}
                 onUpdate={onUpdate}
               />
@@ -54,8 +58,10 @@ const TaskList = ({ tasks, onDelete, onUpdate }) => {
                 key={task._id}
                 _id={task._id}
                 title={task.title}
-                description={task.description}
                 status={task.status}
+                description={task.description}
+                createdAt={task.createdAt}
+                deadline={task.deadline}
                 onDelete={onDelete}
                 onUpdate={onUpdate}
               />

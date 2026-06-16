@@ -3,12 +3,13 @@ const mongoose = require("mongoose");
 const taskSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
+    description: { type: String, required: false },
     status: {
-      type: "String",
+      type: String,
       enum: ["TODO", "IN-PROGRESS", "COMPLETED"],
       default: "TODO",
     },
-    description: { type: String, required: false },
+    deadline: { type: Date, default: null },
   },
   { timestamps: true },
 );
