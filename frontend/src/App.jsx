@@ -103,7 +103,7 @@ function App() {
           className="add-new-task"
           onClick={() => setIsTaskModalOpen(true)}
         >
-          Add new task
+          + New Task
         </button>
 
         <div className="overview-container">
@@ -133,9 +133,7 @@ function App() {
           </div>
         )}
 
-        <div className="status-container">
-          <TaskList tasks={tasks} onDelete={onDelete} onUpdate={onUpdate} />
-        </div>
+        <TaskList tasks={tasks} onDelete={onDelete} onUpdate={onUpdate} />
       </div>
     </>
   );

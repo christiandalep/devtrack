@@ -1,12 +1,28 @@
-.task-container {
+.task-container,
+.task-container-active {
   font-size: 14px;
-  background: #111111;
-  padding: 10px 16px;
+  background: #0f141b;
+  border: 1px solid #1c2530;
+  border-radius: 12px;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+  padding: 10px 12px;
+}
+
+.task-container:hover,
+.task-container-active {
+  background: #141b23;
+  box-shadow:
+    0 0 0 1px #1c2530,
+    0 10px 25px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
 }
 
 .task-content {
   display: flex;
   flex-direction: column;
+  gap: 16px;
 }
 
 .task-heading {
@@ -14,7 +30,6 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 24px;
-  margin-bottom: 12px;
   word-break: break-word;
 }
 
@@ -23,36 +38,9 @@
   font-weight: bold;
 }
 
-.task-edit-input-title,
-.task-edit-input-description {
-  flex: 1;
-  background: transparent;
-  outline: none;
-  color: #9ca3af;
-  font-size: 14px;
-  padding: 5px;
-}
-
-.task-edit-input-title {
-  border: none;
-  border-bottom: 1px solid #3f3f3f;
-}
-
-.task-edit-input-description {
-  padding: 5px;
-  border: 1px solid #3f3f3f;
-  border-radius: 8px;
-  resize: none;
-}
-
-.task-edit-input-title:focus,
-.task-edit-input-description:focus {
-  outline: none;
-  border-color: #f3f4f6;
-}
-
 .task-controls {
   display: flex;
+  flex-direction: row;
   gap: 12px;
 }
 
@@ -75,6 +63,56 @@
   transform: scale(1.1);
 }
 
+.task-edit-input {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.task-edit-input-title,
+.task-edit-input-description,
+.task-edit-input-deadline {
+  flex: 1;
+  background: #0b0f14;
+  outline: none;
+  color: #e2e8f0;
+  font-size: 14px;
+  border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid #1c2530;
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.task-edit-input-description {
+  resize: none;
+}
+
+.task-edit-input-title:focus,
+.task-edit-input-description:focus,
+.task-edit-input-deadline:focus {
+  outline: none;
+  border-color: #4f7cff;
+}
+
+.task-edit-deadline-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.task-edit-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-right: 18px;
+  margin-bottom: 12px;
+}
+
 .task-edit-save-button,
 .task-edit-cancel-button {
   background: transparent;
@@ -89,8 +127,4 @@
 .task-edit-cancel-button:hover {
   color: white;
   transform: scale(1.1);
-}
-
-.task-container div {
-  padding: 2px;
 }

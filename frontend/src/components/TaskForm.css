@@ -1,5 +1,5 @@
 .input-form {
-  background: #111111;
+  background: #0f141b;
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -7,21 +7,31 @@
   border-radius: 12px;
   width: 100%;
   max-width: 500px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
   margin-bottom: 19px;
 }
 
 .input-form input,
-.input-form-description {
+.input-form textarea {
   flex: 1;
-  padding: 10px;
-  background: #111111;
+  padding: 10px 12px;
+  background: #0b0f14;
   border: 1px solid #262626;
-  color: white;
+  color: #e2e8f0;
   border-radius: 8px;
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.input-form-description {
+.input-form input:focus,
+.input-form textarea:focus {
+  border-color: #4f7cff;
+  box-shadow: 0 0 0 3px rgba(79, 124, 255, 0.15);
+  outline: none;
+}
+
+.input-form textarea {
   resize: none;
 }
 
@@ -35,15 +45,28 @@
   flex-grow: 1;
 }
 
-.input-form button {
-  padding: 10px 16px;
-  background: #1f1f1f;
-  border: 1px solid #262626;
-  color: white;
+.input-form-add-button {
+  background: #4f7cff;
+  color: #ffffff;
+  border: none;
+  padding: 10px 14px;
   border-radius: 8px;
-  cursor: pointer;
+  font-weight: 500;
 }
 
-.input-form button:hover {
-  border: 1px solid white;
+.input-form-add-button:hover {
+  background: #3b5fe0;
+}
+
+.input-form-delete-button {
+  background: transparent;
+  color: #a3b1c6;
+  border: 1px solid #1c2530;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+.input-form-delete-button:hover {
+  background: #141b23;
+  color: #e2e8f0;
 }

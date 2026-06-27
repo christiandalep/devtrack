@@ -1,0 +1,26 @@
+.task-list-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.status-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.status-todo,
+.status-in-progress,
+.status-completed {
+  min-width: 0;
+  margin-bottom: 24px;
+}
+
+.task-list ul {
+  display: flex;
+  padding: 0;
+  flex-direction: column;
+  text-align: left;
+  list-style-type: none;
+  gap: 16px;
+}

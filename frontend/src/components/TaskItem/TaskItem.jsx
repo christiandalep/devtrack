@@ -19,6 +19,10 @@ const TaskItem = ({
   const [descriptionValue, setDescriptionValue] = useState(description);
   const [deadlineValue, setDeadlineValue] = useState(deadline);
 
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+
   const handleTitleChange = (e) => {
     setTitleValue(e.target.value);
   };
@@ -50,40 +54,58 @@ const TaskItem = ({
   return (
     <>
       <li key={_id}>
-        <div className="task-container">
+        <div className={`task-container${isEditing ? "-active" : ""}`}>
           <div className="task-content">
-            <div className="task-heading">
-              {isEditing ? (
-                <>
+            {isEditing ? (
+              <>
+                <div className="task-edit-input">
                   <input
                     className="task-edit-input-title"
                     type="text"
                     value={titleValue}
                     onChange={handleTitleChange}
                   />
-                  <div className="task-controls">
-                    <button
-                      className="task-edit-save-button"
-                      onClick={handleSaveClick}
-                    >
-                      Save
-                    </button>
-                    <button
-                      className="task-edit-cancel-button"
-                      onClick={handleCancelClick}
-                    >
-                      Cancel
-                    </button>
+
+                  <textarea
+                    className="task-edit-input-description"
+                    rows={5}
+                    value={descriptionValue}
+                    onChange={handleDescriptionChange}
+                  ></textarea>
+
+                  <div className="task-edit-deadline-container">
+                    <label for="deadline">Due Date</label>
+                    <input
+                      type="date"
+                      id="deadline"
+                      className="task-edit-input-deadline"
+                      value={formatInputDate(deadlineValue)}
+                      onChange={handleDeadlineChange}
+                    />
                   </div>
-                </>
-              ) : (
-                <>
+                </div>
+
+                <div className="task-edit-controls">
+                  <button
+                    className="task-edit-cancel-button"
+                    onClick={handleCancelClick}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    className="task-edit-save-button"
+                    onClick={handleSaveClick}
+                  >
+                    Save
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="task-heading">
                   <div className="task-title">{titleValue}</div>
                   <div className="task-controls">
-                    <button
-                      className="edit-button"
-                      onClick={() => setIsEditing(true)}
-                    >
+                    <button className="edit-button" onClick={handleEditClick}>
                       <Pencil size={18} />
                     </button>
                     <button
@@ -93,39 +115,24 @@ const TaskItem = ({
                       <Trash2 size={18} />
                     </button>
                   </div>
-                </>
-              )}
-            </div>
-
-            {isEditing ? (
-              <>
-                <textarea
-                  className="task-edit-input-description"
-                  rows={5}
-                  value={descriptionValue}
-                  onChange={handleDescriptionChange}
-                ></textarea>
-                <input
-                  type="date"
-                  className="task-edit-input-deadline"
-                  value={formatInputDate(deadlineValue)}
-                  onChange={handleDeadlineChange}
-                />
-              </>
-            ) : (
-              <>
-                <p className="task-description">{description}</p>
-                <div className="div task-dates">
-                  <p className="task-created-at">
-                    Created: {formatDate(createdAt)}
-                  </p>
-                  <p className="task-deadline">Due: {formatDate(deadline)}</p>
                 </div>
+
+                <p className="task-description">{description}</p>
+                <div className="task-dates">
+                  <p className="task-created-at">
+                    <b>Created:</b> {formatDate(createdAt)}
+                  </p>
+                  <p className="task-deadline">
+                    <b>Due:</b> {formatDate(deadline)}
+                  </p>
+                </div>
+                <TaskStatusControls
+                  status={status}
+                  updateStatus={updateStatus}
+                />
               </>
             )}
           </div>
-
-          <TaskStatusControls status={status} updateStatus={updateStatus} />
         </div>
       </li>
     </>

@@ -22,7 +22,6 @@ const TaskForm = ({ onAdd, onClose }) => {
           onChange={(e) => setTitle(e.target.value)}
         />
         <textarea
-          className="input-form-description"
           placeholder="Description"
           rows={5}
           onChange={(e) => setDescription(e.target.value)}
@@ -31,8 +30,12 @@ const TaskForm = ({ onAdd, onClose }) => {
           <input type="date" onChange={(e) => setDeadline(e.target.value)} />
         </div>
         <div className="input-form-controls">
-          <button onClick={submit}>Add</button>
-          <button onClick={onClose}>Cancel</button>
+          <button className="input-form-add-button" onClick={submit}>
+            Add
+          </button>
+          <button className="input-form-delete-button" onClick={onClose}>
+            Cancel
+          </button>
         </div>
       </div>
     </>
