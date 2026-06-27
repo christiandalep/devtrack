@@ -1,6 +1,8 @@
 import { Pencil, Trash2, MoveLeft, MoveRight, Pen } from "lucide-react";
 import { useState } from "react";
-import { formatDate, formatInputDate } from "../utils/dateUtils";
+import { formatDate, formatInputDate } from "../../utils/dateUtils";
+import "./TaskItem.css";
+import TaskStatusControls from "./TaskStatusControls";
 
 const TaskItem = ({
   _id,
@@ -123,44 +125,7 @@ const TaskItem = ({
             )}
           </div>
 
-          <div className="task-status-update-container">
-            {status === "TODO" && (
-              <button
-                className="update-status-button-right"
-                onClick={() =>
-                  onUpdate(_id, title, description, "IN-PROGRESS", deadline)
-                }
-              >
-                <MoveRight size={20} />
-              </button>
-            )}
-
-            {status === "IN-PROGRESS" && (
-              <>
-                <button
-                  className="update-status-button-left"
-                  onClick={() => updateStatus("TODO")}
-                >
-                  <MoveLeft size={20} />
-                </button>
-                <button
-                  className="update-status-button-right"
-                  onClick={() => updateStatus("COMPLETED")}
-                >
-                  <MoveRight size={20} />
-                </button>
-              </>
-            )}
-
-            {status === "COMPLETED" && (
-              <button
-                className="update-status-button-left"
-                onClick={() => updateStatus("IN-PROGRESS")}
-              >
-                <MoveLeft size={20} />
-              </button>
-            )}
-          </div>
+          <TaskStatusControls status={status} updateStatus={updateStatus} />
         </div>
       </li>
     </>

@@ -1,4 +1,4 @@
-import TaskItem from "./TaskItem";
+import TaskItem from "./TaskItem/TaskItem";
 
 const TaskList = ({ tasks, onDelete, onUpdate }) => {
   const todoTasks = tasks.filter((task) => task.status === "TODO");

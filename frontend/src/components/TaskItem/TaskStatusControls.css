@@ -1,0 +1,30 @@
+.task-status-update-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 18px;
+}
+
+.update-status-button-left,
+.update-status-button-right {
+  background: transparent;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  transition: 0.2s ease;
+  margin-top: 4px;
+  margin-right: 4px;
+}
+
+.update-status-button-left:hover,
+.update-status-button-right:hover {
+  color: white;
+  transform: scale(1.2);
+}
+
+.update-status-button-left {
+  margin-right: auto;
+}
+
+.update-status-button-right {
+  margin-left: auto;
+}
