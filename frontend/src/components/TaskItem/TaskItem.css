@@ -22,7 +22,7 @@
 .task-content {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
 }
 
 .task-heading {
@@ -34,8 +34,46 @@
 }
 
 .task-title {
-  font-size: medium;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.task-description {
+  font-size: 14px;
+  font-weight: 400;
+  color: #cbd5e1;
+}
+
+.task-deadline {
+  margin-bottom: 16px;
+}
+
+.task-deadline-label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.task-deadline-date {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.task-metadata {
+  padding-top: 12px;
+  border-top: 1px solid #1c2530;
+}
+
+.task-metadata .task-created-at-label {
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.task-metadata .task-created-at-date {
+  color: #a3b1c6;
+  font-size: 13px;
+  font-weight: 400;
 }
 
 .task-controls {

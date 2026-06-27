@@ -74,7 +74,7 @@ const TaskItem = ({
                   ></textarea>
 
                   <div className="task-edit-deadline-container">
-                    <label for="deadline">Due Date</label>
+                    <label for="deadline">Due Date: </label>
                     <input
                       type="date"
                       id="deadline"
@@ -118,14 +118,20 @@ const TaskItem = ({
                 </div>
 
                 <p className="task-description">{description}</p>
-                <div className="task-dates">
-                  <p className="task-created-at">
-                    <b>Created:</b> {formatDate(createdAt)}
-                  </p>
-                  <p className="task-deadline">
-                    <b>Due:</b> {formatDate(deadline)}
-                  </p>
+                <div className="task-deadline">
+                  <span className="task-deadline-label">Due: </span>
+                  <span className="task-deadline-date">
+                    {formatDate(deadline)}
+                  </span>
                 </div>
+
+                <div className="task-metadata">
+                  <span className="task-created-at-label">Created: </span>
+                  <span className="task-created-at-date">
+                    {formatDate(createdAt)}
+                  </span>
+                </div>
+
                 <TaskStatusControls
                   status={status}
                   updateStatus={updateStatus}
