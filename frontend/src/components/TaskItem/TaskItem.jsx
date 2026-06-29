@@ -11,6 +11,7 @@ const TaskItem = ({
   status,
   createdAt,
   deadline,
+  priority,
   onDelete,
   onUpdate,
 }) => {
@@ -74,7 +75,7 @@ const TaskItem = ({
                   ></textarea>
 
                   <div className="task-edit-deadline-container">
-                    <label for="deadline">Due Date: </label>
+                    <label htmlFor="deadline">Due Date: </label>
                     <input
                       type="date"
                       id="deadline"
@@ -118,10 +119,15 @@ const TaskItem = ({
                 </div>
 
                 <p className="task-description">{description}</p>
-                <div className="task-deadline">
-                  <span className="task-deadline-label">Due: </span>
-                  <span className="task-deadline-date">
+
+                <div className="task-chip-container">
+                  <span className="chip task-chip-deadline">
                     {formatDate(deadline)}
+                  </span>
+                  <span
+                    className={`chip task-chip-priority-${priority.toLowerCase()}`}
+                  >
+                    {priority}
                   </span>
                 </div>
 

@@ -22,6 +22,7 @@ const TaskList = ({ tasks, onDelete, onUpdate }) => {
                   description={task.description}
                   createdAt={task.createdAt}
                   deadline={task.deadline}
+                  priority={task.priority}
                   onDelete={onDelete}
                   onUpdate={onUpdate}
                 />
@@ -43,6 +44,7 @@ const TaskList = ({ tasks, onDelete, onUpdate }) => {
                   description={task.description}
                   createdAt={task.createdAt}
                   deadline={task.deadline}
+                  priority={task.priority}
                   onDelete={onDelete}
                   onUpdate={onUpdate}
                 />
@@ -64,6 +66,7 @@ const TaskList = ({ tasks, onDelete, onUpdate }) => {
                   description={task.description}
                   createdAt={task.createdAt}
                   deadline={task.deadline}
+                  priority={task.priority}
                   onDelete={onDelete}
                   onUpdate={onUpdate}
                 />

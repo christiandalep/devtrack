@@ -33,12 +33,13 @@ function App() {
     fetchTasks();
   }, []);
 
-  const onAdd = async (title, description, deadline) => {
+  const onAdd = async (title, description, deadline, priority) => {
     try {
       await axios.post("http://192.168.50.50:5000/api/tasks", {
         title,
         description,
         deadline,
+        priority,
       });
       fetchTasks();
     } catch (error) {
@@ -71,13 +72,21 @@ function App() {
     }
   };
 
-  const onUpdate = async (id, title, description, status, deadline) => {
+  const onUpdate = async (
+    id,
+    title,
+    description,
+    status,
+    deadline,
+    priority,
+  ) => {
     try {
       let newTask = {};
       title && (newTask.title = title);
       description && (newTask.description = description);
       status && (newTask.status = status);
       deadline && (newTask.deadline = deadline);
+      priority && (newTask.priority = priority);
       await axios.patch(`http://192.168.50.50:5000/api/tasks/${id}`, newTask);
       fetchTasks();
     } catch (error) {

@@ -7,7 +7,7 @@
   transition:
     box-shadow 0.2s ease,
     transform 0.2s ease;
-  padding: 10px 12px;
+  padding: 16px;
 }
 
 .task-container:hover,
@@ -22,7 +22,6 @@
 .task-content {
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 .task-heading {
@@ -37,31 +36,54 @@
   font-size: 18px;
   font-weight: 600;
   color: #e2e8f0;
+  margin-bottom: 8px;
 }
 
 .task-description {
   font-size: 14px;
   font-weight: 400;
   color: #cbd5e1;
-}
-
-.task-deadline {
   margin-bottom: 16px;
 }
 
-.task-deadline-label {
-  font-size: 14px;
-  font-weight: 600;
+.task-chip-container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
 }
 
-.task-deadline-date {
-  font-size: 14px;
-  font-weight: 400;
+.chip {
+  align-items: center;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 999px;
+  border: 1px solid;
+}
+
+.task-chip-priority-low {
+  background: #18271e;
+  border-color: #28523b;
+  color: #4ade80;
+}
+
+.task-chip-priority-medium {
+  background: #2d2416;
+  border-color: #5a4520;
+  color: #fbbf24;
+}
+
+.task-chip-priority-high {
+  background: #2b1b1b;
+  border-color: #4a2525;
+  color: #f87171;
 }
 
 .task-metadata {
   padding-top: 12px;
   border-top: 1px solid #1c2530;
+  margin-bottom: 16px;
 }
 
 .task-metadata .task-created-at-label {
