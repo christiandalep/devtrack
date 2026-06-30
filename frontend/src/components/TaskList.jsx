@@ -10,7 +10,11 @@ const TaskList = ({ tasks, onDelete, onUpdate }) => {
     <>
       <div className="task-list-container">
         <div className="status-container">
-          <div className="status-todo">TODO</div>
+          <div className="status">
+            <div className="status-todo">TODO</div>
+            <span className="status-todo-count">{todoTasks.length}</span>
+          </div>
+
           <div className="task-list">
             <ul>
               {todoTasks.map((task) => (
@@ -32,7 +36,12 @@ const TaskList = ({ tasks, onDelete, onUpdate }) => {
         </div>
 
         <div className="status-container">
-          <div className="status-in-progress">IN-PROGRESS</div>
+          <div className="status">
+            <div className="status-in-progress">IN-PROGRESS</div>
+            <span className="status-in-progress-count">
+              {inProgressTasks.length}
+            </span>
+          </div>
           <div className="task-list">
             <ul>
               {inProgressTasks.map((task) => (
@@ -54,7 +63,13 @@ const TaskList = ({ tasks, onDelete, onUpdate }) => {
         </div>
 
         <div className="status-container">
-          <div className="status-completed">COMPLETED</div>
+          <div className="status">
+            <div className="status-completed">COMPLETED</div>
+            <span className="status-completed-count">
+              {completedTasks.length}
+            </span>
+          </div>
+
           <div className="task-list">
             <ul>
               {completedTasks.map((task) => (

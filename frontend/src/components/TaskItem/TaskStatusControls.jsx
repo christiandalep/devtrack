@@ -10,6 +10,7 @@ const TaskStatusControls = ({ status, updateStatus }) => {
             className="update-status-button-right"
             onClick={() => updateStatus("IN-PROGRESS")}
           >
+            <span>Next</span>
             <MoveRight size={20} />
           </button>
         )}
@@ -21,11 +22,13 @@ const TaskStatusControls = ({ status, updateStatus }) => {
               onClick={() => updateStatus("TODO")}
             >
               <MoveLeft size={20} />
+              <span>Previous</span>
             </button>
             <button
               className="update-status-button-right"
               onClick={() => updateStatus("COMPLETED")}
             >
+              <span>Next</span>
               <MoveRight size={20} />
             </button>
           </>
@@ -37,6 +40,7 @@ const TaskStatusControls = ({ status, updateStatus }) => {
             onClick={() => updateStatus("IN-PROGRESS")}
           >
             <MoveLeft size={20} />
+            <span>Previous</span>
           </button>
         )}
       </div>

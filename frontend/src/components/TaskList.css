@@ -9,10 +9,12 @@
   flex-direction: column;
 }
 
-.status-todo,
-.status-in-progress,
-.status-completed {
+.status {
+  display: flex;
+  justify-content: space-between;
   min-width: 0;
+  border-bottom: 2px solid #1c2530;
+  padding: 8px;
   margin-bottom: 24px;
 }
 

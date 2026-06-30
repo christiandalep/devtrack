@@ -1,6 +1,6 @@
 export const formatDate = (date) => {
   if (!date) {
-    return "N/A";
+    return "No deadline";
   }
   return new Date(date).toLocaleDateString("en-NZ");
 };

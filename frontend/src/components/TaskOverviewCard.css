@@ -6,3 +6,13 @@
   padding: 12px;
   flex: 1;
 }
+
+.overview-count {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.overview-title {
+  font-size: 14px;
+  color: #a3b1c6;
+}
